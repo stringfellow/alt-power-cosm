@@ -20,8 +20,11 @@ class AlternatePowerReporter(object):
         self.api_key = api_key
         self.feed = feed
         self.serial_port = serial_port
+        self.delay = delay
+
         self.arduino = Arduino(self.serial_port)
         self.cosm = CosmSender(self.api_key, self.feed, {}, cacheSize=0)
+
         self.streams = {}
 
     def add_sensor(self, pin_number, feed_id):
