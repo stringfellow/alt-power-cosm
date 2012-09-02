@@ -37,7 +37,12 @@ class AlternatePowerReporter(object):
         result = {}
         self.arduino.parse()
         for stream, pin_no in self.streams.items():
-            result[stream] = self.arduino.analog_read(pin_no)
+            val = self.arduino.analog_read(pin_no)
+            if val > 0:
+                print "%s[%s]: %s" % (stream, pin_no, val)
+                result[stream] = val
+            else:
+                print "%s[%s]: %s" % (stream, pin_no, val)
         return result
 
     def send_data(self, data):
@@ -58,3 +63,10 @@ class AlternatePowerReporter(object):
                 logging.warn(
                     "Stream '%s' not set up on Cosm, will be created" % (
                         stream)) 
+
+
+if __name__ == "__main__":
+    alt = AlternatePowerReporter("NpYwgzQwV8cWE0KyFlQJP_5nvxGSAKxvNXA4YjZmTWlHQT0g", "73301", "/dev/tty.usbserial-A901C6LE")
+    for i in range(len(alt.arduino.analog_input_data)):
+        alt.add_sensor(i, "Current%s" % i)
+    alt.run()
