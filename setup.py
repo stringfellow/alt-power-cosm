@@ -8,8 +8,8 @@ setup(
     packages=find_packages(),
     install_requires=['pyfirmata', 'cosmSender'],
     dependency_links=[
-        "https://github.com/stringfellow/cosmSender/tarball/master",
-        "https://bitbucket.org/tino/pyfirmata/get/tip.tar.gz",
+        "https://github.com/stringfellow/cosmSender/tarball/master#egg=cosmSender",
+        "https://bitbucket.org/tino/pyfirmata/get/tip.tar.gz#egg=pyfirmata",
     ],
     author="Steve Pike",
     author_email="altpower@stevepike.co.uk",
