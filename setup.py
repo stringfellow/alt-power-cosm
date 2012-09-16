@@ -6,7 +6,7 @@ setup(
     name="altpower",
     version="0.1",
     packages=find_packages(),
-    install_requires=['pyfirmata', 'cosmSender']
+    install_requires=['pyfirmata', 'cosmSender'],
     dependency_links=[
         "https://github.com/stringfellow/cosmSender/tarball/master",
         "https://bitbucket.org/tino/pyfirmata/get/tip.tar.gz",
