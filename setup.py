@@ -10,7 +10,7 @@ setup(
         "https://github.com/stringfellow/cosmSender/tarball/master#egg=cosmSender-0.1",
         "https://bitbucket.org/stringfellow/pyfirmata/get/tip.tar.gz#egg=pyfirmata-tip",
     ],
-    install_requires=['pyfirmata==tip', 'cosmSender==0.1'],
+    install_requires=['pyfirmata', 'cosmSender==0.1'],
     author="Steve Pike",
     author_email="altpower@stevepike.co.uk",
     description="Tools for rigging arduino monitoring for alt power",
