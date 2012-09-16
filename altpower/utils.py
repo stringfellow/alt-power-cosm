@@ -10,7 +10,14 @@ ACS712_30A_SENSITIVITY = 0.66
 
 
 def current_sensor_ACS712(rating, read_value):
-    """Convert read value to amps for given rating."""
+    """Convert read value to amps for given rating.
+    
+    See http://www.lucadentella.it/en/2011/11/29/sensore-di-corrente-con-arduino/
+    for an explanation of the equation.
+    
+    """
+    # Note we multiply by 1024 because pyfirmata represents all
+    # values as between 0 and 1
     return (0.0049 * (read_value * 1024) - 2.5) / rating
 
 
