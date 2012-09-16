@@ -1,2 +1,0 @@
-https://github.com/stringfellow/cosmSender/tarball/master#egg=cosmSender
-https://github.com/lupeke/python-firmata/tarball/master#egg=firmata

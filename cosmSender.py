@@ -1,1 +1,0 @@
-../cosmSender/cosmSender.py
