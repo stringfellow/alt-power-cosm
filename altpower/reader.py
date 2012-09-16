@@ -12,13 +12,13 @@ log = logging.getLogger(__file__)
 class AlternatePowerReporter(object):
     """Read a load of things, send to cosm."""
 
-    def __init__(self, api_key, feed, serial_port, delay=5000):
+    def __init__(self, api_key, feed, serial_port, delay=5):
         """Setup hardware and remote feeds.
 
         @param api_key This is the key from Cosm.com
         @param feed This is the feed ID from Cosm.com
         @param serial_port Where to read data from
-        @param delay Number of miliseconds to wait between reads.
+        @param delay Number of seconds to wait between read/sends.
 
         """
         self.api_key = api_key
@@ -49,24 +49,26 @@ class AlternatePowerReporter(object):
     def read_sensors(self):
         """Read all of the pins we know about, return them."""
         results = {}
-        for i in range(self.delay):
+        for i in range(self.delay * 1000):
             for stream, params in self.streams.items():
                 val = params['pin'].read()
                 if val:
                     results.setdefault(stream, {'sum': 0, 'reads': 0})
                     results[stream]['sum'] += params['fn'](val)
                     results[stream]['reads'] += 1
-            time.sleep(self.delay / 1000.0)
+            time.sleep(1 / 1000.0)
 
         for stream, params in results.items():
-            results['value'] = (
+            results[stream]['value'] = (
                 results[stream]['sum'] / float(results[stream]['reads']))
 
+        log.debug("Data is %s" % results)
         return results
 
     def send_data(self, data):
         """Send stuff to cosm."""
         for stream, params in data.items():
+            log.debug("Sending data for %s" % stream)
             self.cosm.sendData(stream, str(params['value']))
 
     def run(self):
