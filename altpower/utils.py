@@ -16,14 +16,14 @@ def current_sensor_ACS712(rating, read_value):
 
 current_sensor_ACS712_5A = partial(
     current_sensor_ACS712,
-    rating=ACS712_5A_SENSITIVITY)
+    ACS712_5A_SENSITIVITY)
 
 
 current_sensor_ACS712_20A = partial(
     current_sensor_ACS712,
-    rating=ACS712_20A_SENSITIVITY)
+    ACS712_20A_SENSITIVITY)
 
 
 current_sensor_ACS712_30A = partial(
     current_sensor_ACS712,
-    rating=ACS712_30A_SENSITIVITY)
+    ACS712_30A_SENSITIVITY)
