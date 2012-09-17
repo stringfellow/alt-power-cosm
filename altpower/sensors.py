@@ -21,7 +21,7 @@ def current_sensor_ACS712(sensitivity_rating, read_value):
     # values as between 0 and 1
     volts_per_increment = 5 / 1024.0
     return (
-        (volts_per_increment * (read_value * 1024) - 2.5) /
+        (volts_per_increment * (read_value * 1023) - 2.5) /
         sensitivity_rating)
 
 
