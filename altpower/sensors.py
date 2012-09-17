@@ -9,9 +9,12 @@ ACS712_20A_SENSITIVITY = 0.100
 ACS712_30A_SENSITIVITY = 0.66
 
 
-def current_sensor_ACS712(rating, read_value):
+def current_sensor_ACS712(sensitivity_rating, read_value):
     """Convert read value to amps for given rating."""
-    return (0.0049 * (read_value * 1024) - 2.5) / rating
+    volts_per_increment = 5 / 1024.0
+    return (
+        (volts_per_increment * (read_value * 1024) - 2.5) /
+        sensitivity_rating)
 
 
 current_sensor_ACS712_5A = partial(
